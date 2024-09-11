@@ -2,4 +2,4 @@
 include:
   - component: gitlab.com/amplify-security/components/runner@0.1.0
     inputs:
-      amplify-endpoint: exactly-bright-sailfish.ngrok-free.app
+      amplify-endpoint: https://exactly-bright-sailfish.ngrok-free.app

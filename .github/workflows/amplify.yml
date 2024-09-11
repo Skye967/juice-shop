@@ -24,4 +24,4 @@
         - name: Amplify Runner
           uses: amplify-security/runner-action@v0.1.0
           with:
-            amplify-endpoint: exactly-bright-sailfish.ngrok-free.app
+            amplify-endpoint: https://exactly-bright-sailfish.ngrok-free.app
