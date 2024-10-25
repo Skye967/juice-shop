@@ -9,7 +9,7 @@ import challengeUtils = require('../lib/challengeUtils')
 
 import * as utils from '../lib/utils'
 const security = require('../lib/insecurity')
-const safeEval = require('notevil')
+const safeEval = require('eval') // Changed from 'notevil' to 'eval'
 const challenges = require('../data/datacache').challenges
 
 module.exports = function b2bOrder () {
