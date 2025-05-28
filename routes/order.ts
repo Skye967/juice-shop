@@ -43,7 +43,8 @@ module.exports = function placeOrder () {
           const pdfFile = `order_${orderId}.pdf`
           const doc = new PDFDocument()
           const date = new Date().toJSON().slice(0, 10)
-          const fileWriter = doc.pipe(fs.createWriteStream(path.join('ftp/', pdfFile)))
+          const safePath = path.join(__dirname, 'ftp', pdfFile);
+          const fileWriter = doc.pipe(fs.createWriteStream(safePath))
 
           fileWriter.on('finish', async () => {
             void basket.update({ coupon: null })
