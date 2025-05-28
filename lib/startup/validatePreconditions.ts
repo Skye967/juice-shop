@@ -92,7 +92,13 @@ const checkIfPortIsAvailable = async (port: number) => {
 const checkIfRequiredFileExists = async (pathRelativeToProjectRoot: string) => {
   const fileName = pathRelativeToProjectRoot.substr(pathRelativeToProjectRoot.lastIndexOf('/') + 1)
 
-  return access(path.resolve(pathRelativeToProjectRoot)).then(() => {
+  const resolvedPath = path.resolve(pathRelativeToProjectRoot);
+  if (!resolvedPath.startsWith(path.resolve('frontend/dist/'))) {
+    logger.warn(`Access to path ${colors.bold(resolvedPath)} is restricted (${colors.red('NOT OK')})`);
+    return false;
+  }
+
+  return access(resolvedPath).then(() => {
     logger.info(`Required file ${colors.bold(fileName)} is present (${colors.green('OK')})`)
     return true
   }).catch(() => {
