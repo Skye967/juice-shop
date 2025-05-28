@@ -14,7 +14,7 @@ module.exports = function serveKeyFiles () {
     if (!file.includes('/') && !file.includes('..')) {
       const safeFilePath = path.join(safeBasePath, file)
       if (safeFilePath.startsWith(safeBasePath)) {
-        res.sendFile(safeFilePath)
+        res.sendFile(path.normalize(safeFilePath))
       } else {
         res.status(403)
         next(new Error('Invalid file path!'))
