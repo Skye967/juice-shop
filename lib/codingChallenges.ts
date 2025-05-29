@@ -21,7 +21,7 @@ export const findFilesWithCodeChallenges = async (paths: readonly string[]): Pro
     if ((await fs.lstat(currPath)).isDirectory()) {
       const files = await fs.readdir(currPath)
       const moreMatches = await findFilesWithCodeChallenges(
-        files.map(file => path.resolve(currPath, file))
+        files.map(file => path.join(currPath, file).replace(/\.\./g, ''))
       )
       matches.push(...moreMatches)
     } else {
