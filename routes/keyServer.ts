@@ -12,7 +12,7 @@ module.exports = function serveKeyFiles () {
     const safeBasePath = path.resolve('encryptionkeys/')
 
     if (!file.includes('/') && !file.includes('..')) {
-      const safeFilePath = path.join(safeBasePath, file)
+      const safeFilePath = path.join(safeBasePath, path.basename(file))
       if (safeFilePath.startsWith(safeBasePath)) {
         res.sendFile(safeFilePath)
       } else {
